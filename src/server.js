@@ -12,7 +12,8 @@ import ApiClient from './ApiClient';
 import universalRouter from './universalRouter';
 import Html from './Html';
 import PrettyError from 'pretty-error';
-
+import Helmet from 'react-helmet';
+import serialize from 'serialize-javascript';
 const pretty = new PrettyError();
 const app = new Express();
 const proxy = httpProxy.createProxyServer({
@@ -46,17 +47,41 @@ app.use((req, res) => {
   const store = createStore(client);
   const location = new Location(req.path, req.query);
   if (__DISABLE_SSR__) {
-    res.send('<!doctype html>\n' +
-      React.renderToString(<Html webpackStats={webpackStats} component={<div/>} store={store}/>));
+    // TODO: fix this
+    // res.send('<!doctype html>\n' +
+    //  React.renderToString(<Html webpackStats={webpackStats} component={<div/>} store={store} />));
   } else {
     universalRouter(location, undefined, store)
       .then(({component, transition, isRedirect}) => {
+
         if (isRedirect) {
           res.redirect(transition.redirectInfo.pathname);
           return;
         }
-        res.send('<!doctype html>\n' +
-          React.renderToString(<Html webpackStats={webpackStats} component={component} store={store}/>));
+
+        const styles = webpackStats.css.files
+          .map((css, i) => <link href={css}
+                                 key={i}
+                                 media="screen, projection"
+                                 rel="stylesheet"
+                                 type="text/css" />);
+
+
+        const script_url = webpackStats.script[0];
+        const content = React.renderToString(component);
+
+        let {title, link, meta} = Helmet.rewind();
+        res.send(Html({
+          meta,
+          link,
+          title,
+          styles,
+          content,
+          script_url,
+          store: serialize(store.getState())
+        }));
+
+
       })
       .catch((error) => {
         console.error('ROUTER ERROR:', pretty.render(error));

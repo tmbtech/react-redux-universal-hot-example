@@ -10,6 +10,7 @@ import {load as loadAuth} from '../actions/authActions';
 import InfoBar from '../components/InfoBar';
 import {createTransitionHook} from '../universalRouter';
 import {requireServerCss} from '../util';
+import Helmet from 'react-helmet';
 
 const styles = __CLIENT__ ? require('./App.scss') : requireServerCss(require.resolve('./App.scss'));
 
@@ -42,12 +43,42 @@ class App extends Component {
 
   render() {
     const {user} = this.props;
+
+    const cdn = '//cdnjs.cloudflare.com/ajax/libs/';
+    const title = 'React Redux Example';
+    const description = 'All the modern best practices in one example.';
+    const image = 'https://react-redux.herokuapp.com/logo.jpg';
+
+    const meta = [
+      {property: "og:site_name", content: title},
+      {property: "og:image", content: image},
+      {property: "og:locale", content: "en_US"},
+      {property: "og:title", content: title},
+      {property: "og:description", content: description},
+      {name: "twitter:card", content: "summary"},
+      {property: "twitter:site", content: "@erikras"},
+      {property: "twitter:creator", content: "@erikras"},
+      {property: "twitter:image", content: image},
+      {property: "twitter:image:width", content: "200"},
+      {property: "twitter:image:height", content: "200"},
+      {property: "twitter:title", content: title},
+      {property: "twitter:description", content: description},
+      {charSet:"utf-8"}
+    ];
+
+    const link = [
+      {rel: "shortcut icon", href: "/favicon.ico"},
+      {href: `${cdn}twitter-bootstrap/3.3.5/css/bootstrap.css`, media:"screen, projection", rel:"stylesheet", type:"text/css"},
+      {href: `${cdn}font-awesome/4.3.0/css/font-awesome.min.css`, media:"screen, projection", rel:"stylesheet", type:"text/css"}
+    ];
+
     return (
       <div className={styles.app}>
+        <Helmet title={title} meta={meta} link={link} />
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container">
             <Link to="/" className="navbar-brand">
-              <div className={styles.brand}/>
+              <div className={styles.brand} />
               React Redux Example
             </Link>
 
@@ -64,7 +95,7 @@ class App extends Component {
             <ul className="nav navbar-nav navbar-right">
               <li>
                 <a href="https://github.com/erikras/react-redux-universal-hot-example"
-                   target="_blank" title="View on Github"><i className="fa fa-github"/></a>
+                   target="_blank" title="View on Github"><i className="fa fa-github" /></a>
               </li>
             </ul>
           </div>
@@ -72,7 +103,7 @@ class App extends Component {
         <div className={styles.appContent}>
           {this.props.children}
         </div>
-        <InfoBar/>
+        <InfoBar />
 
         <div className="well text-center">
           Have questions? Ask for help <a

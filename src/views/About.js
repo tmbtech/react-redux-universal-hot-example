@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import MiniInfoBar from '../components/MiniInfoBar';
 import {requireServerImage} from '../util';
+import Helmet from "react-helmet";
 
 const kitten = __CLIENT__ ? require('./kitten.jpg') : requireServerImage('./kitten.jpg');
 
@@ -17,6 +18,7 @@ export default class About extends Component {
     const {showKitten} = this.state;
     return (
       <div>
+        <Helmet title={"About Page"} />
         <div className="container">
           <h1>About Us</h1>
 
