@@ -50,26 +50,26 @@ class App extends Component {
     const image = 'https://react-redux.herokuapp.com/logo.jpg';
 
     const meta = [
-      {property: "og:site_name", content: title},
-      {property: "og:image", content: image},
-      {property: "og:locale", content: "en_US"},
-      {property: "og:title", content: title},
-      {property: "og:description", content: description},
-      {name: "twitter:card", content: "summary"},
-      {property: "twitter:site", content: "@erikras"},
-      {property: "twitter:creator", content: "@erikras"},
-      {property: "twitter:image", content: image},
-      {property: "twitter:image:width", content: "200"},
-      {property: "twitter:image:height", content: "200"},
-      {property: "twitter:title", content: title},
-      {property: "twitter:description", content: description},
-      {charSet:"utf-8"}
+      {property: 'og:site_name', content: title},
+      {property: 'og:image', content: image},
+      {property: 'og:locale', content: 'en_US'},
+      {property: 'og:title', content: title},
+      {property: 'og:description', content: description},
+      {name: 'twitter:card', content: 'summary'},
+      {property: 'twitter:site', content: '@erikras'},
+      {property: 'twitter:creator', content: '@erikras'},
+      {property: 'twitter:image', content: image},
+      {property: 'twitter:image:width', content: '200'},
+      {property: 'twitter:image:height', content: '200'},
+      {property: 'twitter:title', content: title},
+      {property: 'twitter:description', content: description},
+      {charSet:'utf-8'}
     ];
 
     const link = [
-      {rel: "shortcut icon", href: "/favicon.ico"},
-      {href: `${cdn}twitter-bootstrap/3.3.5/css/bootstrap.css`, media:"screen, projection", rel:"stylesheet", type:"text/css"},
-      {href: `${cdn}font-awesome/4.3.0/css/font-awesome.min.css`, media:"screen, projection", rel:"stylesheet", type:"text/css"}
+      {rel: 'shortcut icon', href: '/favicon.ico'},
+      {href: `${cdn}twitter-bootstrap/3.3.5/css/bootstrap.css`, media:'screen, projection', rel:'stylesheet', type:'text/css'},
+      {href: `${cdn}font-awesome/4.3.0/css/font-awesome.min.css`, media:'screen, projection', rel:'stylesheet', type:'text/css'}
     ];
 
     return (

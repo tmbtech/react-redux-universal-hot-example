@@ -62,9 +62,9 @@ app.use((req, res) => {
         const styles = webpackStats.css.files
           .map((css, i) => <link href={css}
                                  key={i}
-                                 media="screen, projection"
-                                 rel="stylesheet"
-                                 type="text/css" />);
+                                 media='screen, projection'
+                                 rel='stylesheet'
+                                 type='text/css' />);
 
 
         const script_url = webpackStats.script[0];

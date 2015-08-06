@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import MiniInfoBar from '../components/MiniInfoBar';
 import {requireServerImage} from '../util';
-import Helmet from "react-helmet";
+import Helmet from 'react-helmet';
 
 const kitten = __CLIENT__ ? require('./kitten.jpg') : requireServerImage('./kitten.jpg');
 
@@ -18,15 +18,15 @@ export default class About extends Component {
     const {showKitten} = this.state;
     return (
       <div>
-        <Helmet title="About Page" />
-        <div className="container">
+        <Helmet title='About Page' />
+        <div className='container'>
           <h1>About Us</h1>
 
           <p>This project was orginally created by Erik Rasmussen
-            (<a href="https://twitter.com/erikras" target="_blank">@erikras</a>), but has since seen many contributions
+            (<a href='https://twitter.com/erikras' target='_blank'>@erikras</a>), but has since seen many contributions
             from the open source community. Thank you to <a
-              href="https://github.com/erikras/react-redux-universal-hot-example/graphs/contributors"
-              target="_blank">all the contributors</a>.
+              href='https://github.com/erikras/react-redux-universal-hot-example/graphs/contributors'
+              target='_blank'>all the contributors</a>.
           </p>
 
           <h3>Mini Bar <span style={{color: '#aaa'}}>(not that kind)</span></h3>
