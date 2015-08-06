@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import reduxForm from 'redux-form';
 import surveyValidation from '../validation/surveyValidation';
-
+import Helmet from 'react-helmet';
 
 @reduxForm('survey', surveyValidation)
 export default
@@ -37,6 +37,7 @@ class Survey extends Component {
       } = this.props;
     return (
       <div className="container">
+        <Helmet title="Survey" />
         <h1>Survey</h1>
 
         <p>

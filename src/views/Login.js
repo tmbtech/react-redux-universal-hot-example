@@ -5,6 +5,7 @@ import {isLoaded as isAuthLoaded} from '../reducers/auth';
 import * as authActions from '../actions/authActions';
 import {load as loadAuth} from '../actions/authActions';
 import {requireServerCss} from '../util';
+import Helmet from 'react-helmet';
 
 const styles = __CLIENT__ ? require('./Login.scss') : requireServerCss(require.resolve('./Login.scss'));
 
@@ -26,6 +27,7 @@ class Login extends Component {
     const {user, logout} = this.props;
     return (
       <div className={styles.loginPage + ' container'}>
+        <Helmet title="Login" />
         <h1>Login</h1>
         {!user &&
         <div>

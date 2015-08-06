@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import CounterButton from '../components/CounterButton';
 import GithubButton from '../components/GithubButton';
 import {requireServerCss, requireServerImage} from '../util';
+import Helmet from 'react-helmet';
 
 const styles = __CLIENT__ ? require('./Home.scss') : requireServerCss(require.resolve('./Home.scss'));
 
@@ -17,6 +18,7 @@ export default class Home extends Component {
   render() {
     return (
       <div>
+        <Helmet title="Homepage" />
         <div className={styles.masthead}>
           <div className="container">
             <div className={styles.logo}>

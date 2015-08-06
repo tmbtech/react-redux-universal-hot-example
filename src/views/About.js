@@ -18,7 +18,7 @@ export default class About extends Component {
     const {showKitten} = this.state;
     return (
       <div>
-        <Helmet title={"About Page"} />
+        <Helmet title="About Page" />
         <div className="container">
           <h1>About Us</h1>
 

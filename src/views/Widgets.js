@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import * as widgetActions from '../actions/widgetActions';
 import {load as loadWidgets} from '../actions/widgetActions';
 import {requireServerCss} from '../util';
-
+import Helmet from 'react-helmet';
 const styles = __CLIENT__ ? require('./Widgets.scss') : requireServerCss(require.resolve('./Widgets.scss'));
 
 class Widgets extends Component {
@@ -24,6 +24,7 @@ class Widgets extends Component {
     }
     return (
       <div className={styles.widgets + ' container'}>
+        <Helmet title="Widgets" />
         <h1>
           Widgets
           <button className={styles.refreshBtn + ' btn btn-success'} onClick={load}><i className={refreshClassName}/> {' '} Reload Widgets</button>
